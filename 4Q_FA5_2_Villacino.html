@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return showList();">
+        <input type="text" id="contacts">
+        <input type="submit" value="Add">
+        <button type="button" onclick="remove()">Remove</button>
+    </form>
+    <p id="list"></p>
+    <script>
+        var contactsList = [];
+        var x = 0;
+        function showList(){
+            var contactsName = document.getElementById("contacts").value;
+            if (x < 7) {
+                contactsList.push(" " + contactsName);
+                x++;
+            }
+            else{
+                contactsList.shift();
+                contactsList.push(" " + contactsName);
+            }
+            document.getElementById("list").innerHTML = contactsList;
+            return false;
+        }
+        function remove(){
+            contactsList.pop();
+            document.getElementById("list").innerHTML = contactsList;
+            x--;
+        }
+    </script>
+</body>
+</html>
